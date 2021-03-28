@@ -16,7 +16,6 @@ firebase.initializeApp({
     measurementId: "G-Z3D207RE86"
 })
 
-const auth = firebase.auth();
 const firestore = firebase.firestore();
 
 function App() {
