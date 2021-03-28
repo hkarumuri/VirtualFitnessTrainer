@@ -4,7 +4,7 @@ import './App.css';
 import firebase from 'firebase/app';
 import 'firebase/firestore'
 
-import { useCollectionState } from 'react-firebase-hooks/firestore'
+import { useCollectionData, useCollectionState } from 'react-firebase-hooks/firestore'
 
 firebase.initializeApp({
     apiKey: "AIzaSyAMHQVMCtA5pVOqS0EWGPSmeNMwN4yu-hA",
@@ -17,6 +17,15 @@ firebase.initializeApp({
 })
 
 const firestore = firebase.firestore();
+
+function workouts() {
+  //add workouts to database here
+  const workoutRef = firestore.collection('workouts');
+  const query = workoutRef.limit(25);
+
+  const [workouts] = useCollectionData(query, {idField: 'id'});
+
+}
 
 function App() {
   return (
